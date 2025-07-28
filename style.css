@@ -1,0 +1,32 @@
+.item {
+    background-color:rgb(199, 190, 179);
+    width: 260px;
+}
+ 
+.item > img {
+    width: 280px;
+    height: 350px;
+}
+
+.name {
+    font-size: large;
+}
+
+.plus {
+    cursor: pointer;
+}
+
+.minus {
+    cursor: pointer;
+}
+.description {
+    font-size: medium;
+    float:right;
+    font-style: italic;
+}
+.price {
+    font-size: medium;
+    margin-bottom: 1ex;
+    float: left;
+}
+
