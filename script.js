@@ -105,7 +105,6 @@ function resetShoppingList() {
     count();
 }
 
-// Skapar varje produktkort och lägger in i DOM
 function renderItems() {
     const container = document.querySelector("#shoppinglist");
     const template = `
@@ -116,7 +115,7 @@ function renderItems() {
                 <span class="plus float-end" title="Lägg till plagg">
                     <i class="bi bi-plus-square"></i>                  
                 </span>
-                <span class="minus float-end" title="Ta bort plagg">
+                <span class="minus float-end me-2" title="Ta bort plagg">
                     <i class="bi bi-dash-square-fill" aria-hidden="true"></i>
                 </span>
             </div>
@@ -135,3 +134,13 @@ function renderItems() {
         element.querySelector("img").alt = item.name;
         element.querySelector(".name").textContent = item.name;
         element.querySelector(".description").textContent = item.description;
+        element.querySelector(".price").textContent = item.price + " " + item.unit;
+        element.querySelector(".unit").textContent = item.unit;
+
+        // Lägg till klickfunktioner på plus/minus-knappar
+        element.querySelector(".plus").addEventListener("click", () => increment(item.name));
+        element.querySelector(".minus").addEventListener("click", () => decrement(item.name));
+
+        container.appendChild(element);
+    });
+}
