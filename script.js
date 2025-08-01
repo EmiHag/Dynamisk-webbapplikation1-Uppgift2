@@ -1,6 +1,6 @@
 const listItems = [
    {
-      name: "Shirt",
+      name: "Shirt", 
       description: "Knitted beige off‑shoulder top",
       price: 200,
       unit: "kr",
