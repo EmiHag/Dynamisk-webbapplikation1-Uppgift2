@@ -1,144 +1,172 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background: linear-gradient(135deg, #fdfbfb, #ebedee);
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
+  background-color: #f9fafb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #333;
+  margin: 0;
+  padding: 2rem;
 }
 
 h1 {
-  font-weight: 700;
-  color: #5D3FD3;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 2rem;
   text-align: center;
-  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.05);
 }
 
-.container {
-  padding-bottom: 2rem;
+/* Container för produkterna */
+#shoppinglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
 }
 
-.item {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 10px 20px rgba(93, 63, 211, 0.1);
-  width: 200px;
-  margin: 1rem;
-  overflow: hidden;
+/* Kort för varje produkt */
+.card {
+  width: 180px;
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  background: #fff;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.item:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 12px 24px rgba(93, 63, 211, 0.2);
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.item img {
+.card-img-top {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  border-radius: 16px 16px 0 0;
-  transition: opacity 0.3s;
+  border-radius: 12px 12px 0 0;
 }
 
-.product-card {
+.card-body {
   padding: 1rem;
-  background: #fff;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.name {
-  font-weight: bold;
+.card-title {
   font-size: 1.1rem;
-  color: #333;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+  color: #1a1a1a;
 }
 
-.description {
-  font-size: 0.9rem;
+.card-text {
+  font-size: 0.85rem;
   color: #666;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
-.price {
-  font-weight: 500;
-  color: #5D3FD3;
-}
-
-.unit {
-  font-size: 0.8rem;
-  color: #aaa;
-}
-
-.plus, .minus {
-  cursor: pointer;
-  color: #5D3FD3;
-  font-size: 1.4rem;
-  margin-left: 0.5rem;
-  transition: transform 0.2s ease;
-}
-
-.plus:hover, .minus:hover {
-  transform: scale(1.2);
-  color: #FF69B4;
-}
-
-input[type="number"] {
-  width: 50px;
-  padding: 2px 4px;
-  margin-left: 4px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  text-align: center;
-}
-
-#sum {
-  font-weight: bold;
-  padding-top: 1rem;
-  font-size: 1.1rem;
-  color: #444;
-  background: #f3f0ff;
-  padding: 10px;
-  border-radius: 8px;
-}
-
-.count-btn {
-  margin-top: 10px;
-  margin-right: 10px;
-  padding: 8px 16px;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  background-color: #5D3FD3;
-  color: white;
+/* Pris */
+.card-body p {
   font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  color: #444;
+  margin-bottom: 0.75rem;
 }
 
-.count-btn:hover {
-  background-color: #4a32b5;
-  transform: scale(1.05);
+/* Input antal */
+input[type=number] {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+  border: 1.5px solid #ddd;
+  border-radius: 6px;
+  transition: border-color 0.3s ease;
 }
 
-.table {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+input[type=number]:focus {
+  border-color: #6c63ff;
+  outline: none;
 }
 
-.table th {
-  background-color: #f0f0ff;
-  color: #5D3FD3;
-  font-weight: bold;
+/* Lägg till-knapp */
+.btn-primary {
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: 8px;
+  padding: 0.4rem 0;
+  transition: background-color 0.3s ease;
 }
 
-.table td {
-  vertical-align: middle;
+.btn-primary:hover {
+  background-color: #5848c2;
 }
 
-.form-check {
-  margin-top: 1rem;
-}
-
-.form-check-label {
-  margin-left: 0.3rem;
+/* Tabell */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
   font-size: 0.95rem;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.8rem 0.5rem;
+  color: #555;
+  border-bottom: 2px solid #ddd;
+  font-weight: 600;
+}
+
+tbody td {
+  padding: 0.6rem 0.5rem;
+  border-bottom: 1px solid #eee;
+  color: #444;
+}
+
+/* Ta bort-knapp i tabellen */
+.btn-danger {
+  font-size: 0.9rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #bb2d3b;
+  color: white;
+}
+
+/* Totalsumma */
+#sum {
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+/* Checkbox och knappar */
+.form-check {
+  margin-bottom: 1rem;
+  user-select: none;
+}
+
+.btn-sm {
+  padding: 0.4rem 1.1rem;
+}
+
+/* Responsivitet */
+@media (max-width: 768px) {
+  #shoppinglist {
+    justify-content: center;
+  }
+
+  .card {
+    width: 140px;
+  }
 }
