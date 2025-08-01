@@ -1,12 +1,12 @@
-// Vi skapar en lista (array) med våra objekt (plagg och information om dessa)
+// Lista med produkter (plagg och deras info)
 const listItems = [
     {
         name: "Shirt",
         id: "shirt",
-        description: "Knitted beige", 
+        description: "Knitted beige off‑shoulder top",
         price: 200,
         unit: "kr",
-        image: "https://pixabay.com/sv/illustrations/tr%C3%B6ja-mockup-t-shirt-mockup-kl%C3%A4der-7979853/"
+        image: "https://images.unsplash.com/photo-1656166192672-1fa01c14885f?w=500&auto=format&fit=crop&q=60"
     },
     {
         name: "Trousers",
@@ -14,7 +14,7 @@ const listItems = [
         description: "Trousers in denim",
         price: 300,
         unit: "kr",
-        image: "https://pixabay.com/sv/photos/kvinna-tillf%C3%A4llig-jeans-solglas%C3%B6gon-9035476/"
+        image: "https://plus.unsplash.com/premium_photo-1673977134363-c86a9d5dcafa?w=500&auto=format&fit=crop&q=60"
     },
     {
         name: "Linne",
@@ -22,7 +22,7 @@ const listItems = [
         description: "White top",
         price: 150,
         unit: "kr",
-        image: "https://pixabay.com/sv/photos/kvinna-ung-tillf%C3%A4llig-jeans-8879486/"
+        image: "https://plus.unsplash.com/premium_photo-1687188208380-3280626ec43e?w=500&auto=format&fit=crop&q=60"
     },
     {
         name: "Sweatshirt",
@@ -30,7 +30,7 @@ const listItems = [
         description: "Grey sweatshirt made with cotton",
         price: 150,
         unit: "kr",
-        image: "https://pixabay.com/sv/photos/lady-m%C3%B6ssa-tr%C3%B6ja-mode-kl%C3%A4der-9627841/"
+        image: "https://images.unsplash.com/photo-1692221271229-27dc0d3f9ca3?w=500&auto=format&fit=crop&q=60"
     },
     {
         name: "Maxidress",
@@ -38,21 +38,21 @@ const listItems = [
         description: "Long dress in soft cotton",
         price: 150,
         unit: "kr",
-        image: "https://pixabay.com/sv/photos/frihet-flicka-kl%C3%A4nning-1712590/"
+        image: "https://images.unsplash.com/photo-1686562376391-966faa514647?w=500&auto=format&fit=crop&q=60"
     }
 ];
 
-// Vi skapar en objekt-array som håller antalet av varje plagg
+// Objekt som håller koll på antal
 let shoppingList = {};
 
-// Initiera listan med 0 antal för varje plagg
+// Initiera listan med 0 för varje produkt
 function initShoppingList() {
     for (let item of listItems) {
         shoppingList[item.name] = 0;
     }
 }
 
-// Renderar inköpslistan i tabellen
+// Uppdatera tabellen med produkter som lagts till
 function renderShoppingList() {
     const tbody = document.querySelector("#protocol > tbody");
     tbody.innerHTML = "";
@@ -67,14 +67,14 @@ function renderShoppingList() {
         });
 }
 
-// Ökar antalet plagg
+// Öka antal för en produkt
 function increment(name) {
     shoppingList[name]++;
     renderShoppingList();
     count();
 }
 
-// Minskar antalet plagg (inte under 0)
+// Minska antal för en produkt
 function decrement(name) {
     if (shoppingList[name] > 0) {
         shoppingList[name]--;
@@ -83,9 +83,9 @@ function decrement(name) {
     }
 }
 
-// Räknar antal produkter och total kostnad
+// Räkna antal produkter och totalkostnad
 function count() {
-    const count = Object.values(shoppingList).reduce((sum, value) => sum + value, 0);
+    const count = Object.values(shoppingList).reduce((sum, val) => sum + val, 0);
     const total = Object.entries(shoppingList).reduce((sum, [name, amount]) => {
         const item = listItems.find(p => p.name === name);
         return sum + (item.price * amount);
@@ -96,7 +96,7 @@ function count() {
         `Du har lagt till ${count} ${plural} i listan och det totala priset är ${total.toFixed(2)} kr.`;
 }
 
-// Återställer inköpslistan till 0
+// Återställ allt till 0
 function resetShoppingList() {
     for (let key in shoppingList) {
         shoppingList[key] = 0;
@@ -105,29 +105,29 @@ function resetShoppingList() {
     count();
 }
 
+// Rendera produkterna visuellt
 function renderItems() {
     const container = document.querySelector("#shoppinglist");
     const template = `
-        <img>
+        <img style="width: 150px;">
         <div class="p-2">
             <div>
-                <span class="name"></span>
+                <span class="name fw-bold"></span>
                 <span class="plus float-end" title="Lägg till plagg">
                     <i class="bi bi-plus-square"></i>                  
                 </span>
                 <span class="minus float-end me-2" title="Ta bort plagg">
-                    <i class="bi bi-dash-square-fill" aria-hidden="true"></i>
+                    <i class="bi bi-dash-square-fill"></i>
                 </span>
             </div>
-            <div class="price"></div>
-            <div class="unit"></div>
-            <div class="description"></div>
+            <div class="price text-muted"></div>
+            <div class="description small"></div>
         </div>
     `;
 
     listItems.forEach(item => {
         const element = document.createElement("div");
-        element.classList.add("item", "ms-2");
+        element.classList.add("item", "ms-2", "mb-4");
         element.innerHTML = template;
 
         element.querySelector("img").src = item.image;
@@ -135,12 +135,17 @@ function renderItems() {
         element.querySelector(".name").textContent = item.name;
         element.querySelector(".description").textContent = item.description;
         element.querySelector(".price").textContent = item.price + " " + item.unit;
-        element.querySelector(".unit").textContent = item.unit;
 
-        // Lägg till klickfunktioner på plus/minus-knappar
         element.querySelector(".plus").addEventListener("click", () => increment(item.name));
         element.querySelector(".minus").addEventListener("click", () => decrement(item.name));
 
         container.appendChild(element);
     });
 }
+
+// Starta allt när sidan laddas
+window.addEventListener("DOMContentLoaded", () => {
+    initShoppingList();
+    renderItems();
+    count();
+});
