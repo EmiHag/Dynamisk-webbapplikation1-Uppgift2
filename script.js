@@ -39,6 +39,46 @@ const listItems = [
     image: "https://images.unsplash.com/photo-1686562376391-966faa514647?w=500",
     category: "Klänningar"
   }
+   {
+    name: "Shirt",
+    description: "Knitted beige off‑shoulder top",
+    price: 200,
+    unit: "kr",
+    image: "https://images.unsplash.com/photo-1656166192672-1fa01c14885f?w=500",
+    category: "Toppar"
+  },
+  {
+    name: "Trousers",
+    description: "Trousers in denim",
+    price: 300,
+    unit: "kr",
+    image: "https://plus.unsplash.com/premium_photo-1673977134363-c86a9d5dcafa?w=500",
+    category: "Byxor"
+  },
+  {
+    name: "Linne",
+    description: "White top",
+    price: 150,
+    unit: "kr",
+    image: "https://plus.unsplash.com/premium_photo-1687188208380-3280626ec43e?w=500",
+    category: "Toppar"
+  },
+  {
+    name: "Sweatshirt",
+    description: "Grey sweatshirt made with cotton",
+    price: 150,
+    unit: "kr",
+    image: "https://images.unsplash.com/photo-1692221271229-27dc0d3f9ca3?w=500",
+    category: "Toppar"
+  },
+  {
+    name: "Maxidress",
+    description: "Long dress in soft cotton",
+    price: 150,
+    unit: "kr",
+    image: "https://images.unsplash.com/photo-1686562376391-966faa514647?w=500",
+    category: "Klänningar"
+  }
 ];
 
 let shoppingList = {};
