@@ -1,7 +1,7 @@
 const listItems = [
   {
     name: "Shirt",
-    description: "Knitted beige off‑shoulder top",
+    description: "Knitted beige off‑shoulder top", 
     price: 200,
     unit: "kr",
     image: "https://images.unsplash.com/photo-1656166192672-1fa01c14885f?w=500",
