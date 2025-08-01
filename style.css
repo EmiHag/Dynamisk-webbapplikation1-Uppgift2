@@ -1,3 +1,4 @@
+/* Reset */
 * {
   box-sizing: border-box;
 }
@@ -90,7 +91,7 @@ input[type=number] {
 }
 
 input[type=number]:focus {
-  border-color: #6c63ff;
+  border-color: #999999;
   outline: none;
 }
 
@@ -100,11 +101,15 @@ input[type=number]:focus {
   font-weight: 600;
   border-radius: 8px;
   padding: 0.4rem 0;
+  background-color: #555555;
+  border: none;
   transition: background-color 0.3s ease;
+  color: white;
 }
 
 .btn-primary:hover {
-  background-color: #5848c2;
+  background-color: #444444;
+  color: white;
 }
 
 /* Tabell */
@@ -134,11 +139,14 @@ tbody td {
   font-size: 0.9rem;
   padding: 0.15rem 0.5rem;
   border-radius: 6px;
+  background-color: #bb2d3b;
+  border: none;
+  color: white;
   transition: background-color 0.3s ease;
 }
 
 .btn-danger:hover {
-  background-color: #bb2d3b;
+  background-color: #9e2530;
   color: white;
 }
 
@@ -154,6 +162,7 @@ tbody td {
 .form-check {
   margin-bottom: 1rem;
   user-select: none;
+  color: #444;
 }
 
 .btn-sm {
