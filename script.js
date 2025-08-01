@@ -65,14 +65,14 @@ function renderShoppingList() {
 function increment(name) {
     shoppingList[name]++;
     renderShoppingList();
-    count();
+    // Här räknar vi inte ut total direkt
 }
 
 function decrement(name) {
     if (shoppingList[name] > 0) {
         shoppingList[name]--;
         renderShoppingList();
-        count();
+        // Här räknar vi inte ut total direkt
     }
 }
 
@@ -93,7 +93,8 @@ function resetShoppingList() {
         shoppingList[key] = 0;
     }
     renderShoppingList();
-    count();
+    // Nollställ summa-texten
+    document.getElementById("sum").innerHTML = "Total kostnad:";
 }
 
 function renderItems() {
@@ -140,10 +141,4 @@ function renderItems() {
 window.onload = () => {
     initShoppingList();
     renderItems();
-
-    // Eventuell återställ-knapp
-    const resetBtn = document.getElementById("reset-btn");
-    if (resetBtn) {
-        resetBtn.addEventListener("click", resetShoppingList);
-    }
 };
