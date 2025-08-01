@@ -39,3 +39,8 @@ body {
   font-weight: bold;
   padding-top: 1rem;
 }
+
+select.form-select {
+  max-width: 300px;
+  font-size: 1.1rem;
+}
